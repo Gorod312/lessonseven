@@ -30,4 +30,59 @@ nav a{
 nav a:hover{
     transform: scale(1.1);
 }
+.gridBlock{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(auto-fill,1fr);
+    grid-gap: 10px;
+    justify-items: center;
+
+}
+
+/*главная*/
+.item{
+    width: 300px;
+    transition: 0.25s;
+}
+.item:hover{
+    transform: scale(1.1);
+}
+.item img{
+    width: 100%;
+}
+.item p{
+    padding: 5px;
+}
+.item a{
+    display: inline-block;
+    text-decoration: none;
+    background-color: darkred;
+    padding: 5px;
+    border-radius: 10px;
+    color: wheat;
+    outline: none;
+    box-shadow: 2px 5px 10px -2px rgba(0,0,0,0.99);
+    transition: 0.25s;
+}
+.item a:hover{
+    transform: scale(1.1);
+}
+.item a:active{
+    transform: scale(0.9);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

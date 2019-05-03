@@ -1,2 +1,15 @@
+<div class="gridBlock">
+    <? foreach ($content as $item): ?>
+    <? if ($item['id_nation']==='1'){
+            $item['id_nation']="usa";
+        } else{
+            $item['id_nation']="ussr";
+        }?>
+<div class="item">
+    <img src="img/ship/<?=$item['id_nation']?>/<?=$item['img']?>" alt="<?=$item['img']?>">
+    <p><?=$item['prev']?></p>
+    <a href="#">Купить</a>
+</div>
+    <? endforeach; ?>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, impedit iusto laborum modi repellat sed sit vitae. Amet, officia veniam?
+</div>
