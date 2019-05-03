@@ -7,6 +7,12 @@ function prepareVariables($page, $action, $id)
         case 'index':
             $params["content"] = getAllshow();
             break;
+        case 'group':
+            $params["content"]=getGroup($id);
+            break;
+        case 'cart':
+            $params["content"]=getGroup($id);
+            break;
     }
     return $params;
 

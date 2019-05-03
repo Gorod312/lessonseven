@@ -24,10 +24,10 @@ function getAllshow()
     return $result;
 }
 
-function getGroupAnimals($page)
+function getGroup($id)
 {
-    $group = ($page === 'cats') ? 1 : 2;
-    $sql = "SELECT * FROM `product` WHERE `Id_class`=$group";
+    $group = ($id === '1') ? 1 : 2;
+    $sql = "SELECT * FROM `ships` WHERE `Id_nation`=$group";
     $result = getAssocResult($sql);
     return $result;
 }

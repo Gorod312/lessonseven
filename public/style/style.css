@@ -30,6 +30,11 @@ nav a{
 nav a:hover{
     transform: scale(1.1);
 }
+.mb_cart{
+    padding: 5px;
+    position: relative;
+    top: -12px;
+}
 .gridBlock{
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -42,17 +47,19 @@ nav a:hover{
 /*главная*/
 .item{
     width: 300px;
-    transition: 0.25s;
+    transition: 0.3s;
 }
 .item:hover{
     transform: scale(1.1);
 }
 .item img{
-    width: 100%;
+    width: 214px;
+    height: 126px;
 }
 .item p{
     padding: 5px;
 }
+
 .item a{
     display: inline-block;
     text-decoration: none;
@@ -64,10 +71,56 @@ nav a:hover{
     box-shadow: 2px 5px 10px -2px rgba(0,0,0,0.99);
     transition: 0.25s;
 }
+
 .item a:hover{
     transform: scale(1.1);
 }
+
 .item a:active{
+    transform: scale(0.9);
+}
+.nameShip{
+    font-size: 1.5em;
+    font-weight: 600;
+    color: darkred;
+}
+.priceShip{
+    font-size: 1em;
+    font-weight: 400;
+    color: wheat;
+}
+.cartblockGrid{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: auto;
+    grid-gap: 20px;
+}
+.cartblock img{
+    height: 100%;
+}
+.textCart{
+    width: 400px;
+}
+.md_margin{
+    margin-bottom: 10px;
+}
+.totalbtn{
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    background-color: darkred;
+    padding: 5px;
+    border-radius: 10px;
+    color: wheat;
+    outline: none;
+    box-shadow: 2px 5px 10px -2px rgba(0,0,0,0.99);
+    transition: 0.25s;
+}
+
+.totalbtn:hover{
+    transform: scale(1.1);
+}
+.totalbtn:active{
     transform: scale(0.9);
 }
 
