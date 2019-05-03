@@ -5,7 +5,7 @@ define('SITE_DIR',__DIR__.'/../');
 define('PUBLIC_DIR',SITE_DIR.'public/');
 define('IMG_DIR','img/');
 define('ENGINE_DIR',SITE_DIR.'engine/');
-define('VIEW_DIR',SITE_DIR.'view/');
+define('VIEW_DIR','../view/');
 define('LAYOUTS_DIR',VIEW_DIR.'layout/');
 
 

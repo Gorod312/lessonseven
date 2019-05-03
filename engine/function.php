@@ -19,7 +19,7 @@ function getSinglepage($id)
 
 function getAllshow()
 {
-    $sql = "SELECT * FROM `ship` WHERE 1";
+    $sql = "SELECT * FROM `ships` WHERE 1";
     $result = getAssocResult($sql);
     return $result;
 }

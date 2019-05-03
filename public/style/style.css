@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-size: 16px;
+}
+.content{
+    width: 1200px;
+    margin: 0 auto;
+}
+header{
+    max-width: 1200px;
+    height: 300px;
+    background-image: url(../img/header/header.jpg);
+}
+nav{
+    text-align: center;
+}
+.logomain{
+    width: 46px;
+
+}
+nav a{
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    transition: 0.5s;
+}
+nav a:hover{
+    transform: scale(1.1);
+}
+

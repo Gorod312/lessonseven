@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Корабли</title>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
 <div class="content">
-<header>
-    <?=$menu?>
-</header>
+    <header>
+    </header>
+    <nav>
+        <?= $menu ?>
+    </nav>
     <div class="wrapper">
-        <?=$content?>
+        <?= $content ?>
     </div>
 </div>
 </body>

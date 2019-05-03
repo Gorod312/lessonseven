@@ -1,28 +1,11 @@
 <?php
 
-function prepareVariables($page, $action, $id,$idComment)
+function prepareVariables($page, $action, $id)
 {
     $params = [];
     switch ($page) {
         case 'index':
             $params["content"] = getAllshow();
-            break;
-        case 'singlepage':
-            if ($action == "add") {
-                addcomment($id);
-                header("Location: /singlepage/$id");
-            };
-            if ($action == "delete") {
-                $error = deleteComment($idComment);
-                header("Location: /singlepage/$id");
-
-            }
-            $params["content"] = getSinglepage($id);
-            $params["comments"] = getAllcomments($id);
-            break;
-        case 'cats':
-        case 'dogs':
-            $params["content"] = getGroupAnimals($page);;
             break;
     }
     return $params;
@@ -32,16 +15,16 @@ function prepareVariables($page, $action, $id,$idComment)
 function render($page, $params = [])
 {
 
-    return renderTamplate(LAYOUTS_DIR . 'layout', [
-        "content" => renderTamplate($page, $params),
-        "menu" => renderTamplate("menu")
+    return renderTemplate(LAYOUTS_DIR . 'layout', [
+        "content" => renderTemplate($page, $params),
+        "menu" => renderTemplate("menu")
     ]);
 }
 
 
 //Функция возвращает текст шаблона $page с подставленными переменными из
 //массива $params, просто текст
-function renderTamplate($page, $params = [])
+function renderTemplate($page, $params = [])
 {
     ob_start();
 
