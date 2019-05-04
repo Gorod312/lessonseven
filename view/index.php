@@ -6,10 +6,10 @@
             $item['id_nation']="ussr";
         }?>
 <div class="item">
-    <img src="img/ship/<?=$item['id_nation']?>/<?=$item['img']?>" alt="<?=$item['img']?>">
+    <img src="/img/ship/<?=$item['id_nation']?>/<?=$item['img']?>" alt="<?=$item['img']?>">
     <p class="nameShip"><?=$item['name']?></p>
     <p><?=$item['prev']?></p>
-    <a href="#">Купить  <span class="priceShip"><?=$item['price']?></span>$</a>
+    <a href="/index/addItem/<?=$item['id']?>">Купить  <span class="priceShip"><?=$item['price']?></span>$</a>
 </div>
     <? endforeach; ?>
 

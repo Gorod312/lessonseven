@@ -61,6 +61,22 @@ function getAssocResult($sql, $db = null)
     mysqli_close($db);
     return $array_result;
 }
+function singleAssocResult($sql,$db=null){
+    //если соединения с БД нет, создаем
+    if (!$db) {
+        $db = createConnection();
+    }
+
+    //выполняем запрос
+    $result = mysqli_query($db, $sql);
+
+    //задаем переменную с результирующими данными
+    $row = mysqli_fetch_assoc($result);
+
+    //закрываем соединение
+    mysqli_close($db);
+    return $row;
+}
 
 /**
  * Функция выполняет SQL запрос в БД и пытается получить ассоцитивный массив

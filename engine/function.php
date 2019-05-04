@@ -1,22 +1,5 @@
 <?php
 
-function addview($id){
-    $sql = "SELECT * FROM `product` WHERE Id=$id";
-    $result = getAssocResult($sql);
-    $view=1+(+($result[0]['view']));
-    $sql="UPDATE `product` SET `view`=$view WHERE `id`=$id";
-    execQuery($sql);
-}
-function getSinglepage($id)
-{
-    if (isset($_GET['view'])){
-        addview($id);
-    }
-    $sql = "SELECT * FROM `product` WHERE `id`=$id";
-    $result = getAssocResult($sql);
-    return $result;
-}
-
 function getAllshow()
 {
     $sql = "SELECT * FROM `ships` WHERE 1";
@@ -31,25 +14,31 @@ function getGroup($id)
     $result = getAssocResult($sql);
     return $result;
 }
-
-
-function getAllcomments($id)
+function getGroupCart($id)
 {
-    $sql = "SELECT * FROM `comment` WHERE `id_product`=$id";
-    return getAssocResult($sql);
+    $sql = "SELECT * FROM `ships` WHERE `id` IN ($id)";
+    $result = getAssocResult($sql);
+    return $result;
 }
 
-
-
-function addcomment($id)
+function getCart()
 {
-    $db = createConnection();
-    $name = escapeString($db,$_POST['author']);
-    $message = escapeString($db, $_POST['message']);
-    $sql = "INSERT INTO `comment` (`id_product`, `author`, `text`) VALUES ('{$id}', '{$name}','{$message}')";
-    return execQuery($sql);
+    if (empty($_SESSION['collection'])) {
+        return null;
+    }
+    $result = "";
+    $arr = $_SESSION['collection'];
+    foreach ($arr as $key => $value) {
+        if (empty($result)) {
+            $result = $key;
+        } else {
+
+            $result .= "," . $key;
+        }
+    }
+    return getGroupCart($result);
+
 }
-function deleteComment($id) {
-    $sql = "DELETE FROM `comment` WHERE `comment`.`id` = $id";
-    return execQuery($sql);
-}
+//INSERT INTO MyTable ( Column1, Column2 ) VALUES
+//( Value1, Value2 ), ( Value1, Value2 )
+

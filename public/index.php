@@ -9,6 +9,7 @@ $url_array = explode("/", $_SERVER['REQUEST_URI']);
 $page = "";
 $action = "";
 $id = "";
+$idItems="";
 if ($url_array[1] == "") {
     $page = 'index';
 } else {
@@ -20,14 +21,16 @@ if ($url_array[1] == "") {
             $action = $url_array[2];
             if (is_numeric($url_array[3])) {
                 $id = $url_array[3];
+                $idItems = $url_array[4];
             }
         }
     }
 }
 
 
-$params = prepareVariables($page, $action, $id);
+$params = prepareVariables($page, $action, $id,$idItems);
 
 
 //Вызываем рендер, и передаем в него имя шаблона и массив подстановок
 echo render($page, $params);
+

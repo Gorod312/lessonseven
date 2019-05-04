@@ -2,17 +2,37 @@
     margin: 0;
     padding: 0;
 }
+html,
+body{
+    height: 100%;
+}
+
 body{
     font-size: 16px;
 }
 .content{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 1200px;
     margin: 0 auto;
+
+}
+
+.contentIn{
+    flex: 1;
+
 }
 header{
     max-width: 1200px;
     height: 300px;
     background-image: url(../img/header/header.jpg);
+}
+footer{
+    height: 100px;
+    background-color: darkred;
+    margin-top: 50px;
 }
 nav{
     text-align: center;
@@ -29,6 +49,22 @@ nav a{
 }
 nav a:hover{
     transform: scale(1.1);
+}
+
+.blocksummItem{
+    position: absolute;
+    padding: 8px;
+    border-radius: 25px;
+    background-color: red;
+    color: wheat;
+    top: 0px;
+    right: 10px;
+    z-index: -1;
+
+}
+.cartbtn{
+    display: inline-block;
+    position: relative;
 }
 .mb_cart{
     padding: 5px;
@@ -123,7 +159,14 @@ nav a:hover{
 .totalbtn:active{
     transform: scale(0.9);
 }
-
+.emptyblock{
+    font-size: 1em;
+    color: darkred;
+    text-align: center;
+}
+.emptyblock h2{
+    text-align: center;
+}
 
 
 

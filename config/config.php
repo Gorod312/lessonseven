@@ -19,4 +19,5 @@ define('DB_NAME', 'ship');
 require_once ENGINE_DIR.'db.php';
 require_once ENGINE_DIR.'function.php';
 require_once ENGINE_DIR.'router.php';
+require_once ENGINE_DIR.'auth.php';
 

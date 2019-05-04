@@ -1,17 +1,41 @@
 <?php
 
-function prepareVariables($page, $action, $id)
+function prepareVariables($page, $action, $id,$idItems)
 {
     $params = [];
     switch ($page) {
         case 'index':
+            if ($action==="addItem"){
+                addItemCard($id);
+                header("Location: /$page/");
+            }
             $params["content"] = getAllshow();
             break;
         case 'group':
+            if ($action==="addItem"){
+                addItemCard($idItems);
+                header("Location: /$page/$id");
+            }
             $params["content"]=getGroup($id);
             break;
         case 'cart':
-            $params["content"]=getGroup($id);
+            if ($action==="addItem"){
+                addItemCard($idItems);
+                header("Location: /$page/");
+            }
+            if ($action==="delItem"){
+                delItemCard($idItems);
+                header("Location: /$page/");
+            }
+
+            $params["content"]=getCart();
+            break;
+        case 'send':
+            if ($action==="total"){
+                totalCart();
+                header("Location: /$page/");
+            }
+            $params["content"]=getCart();
             break;
     }
     return $params;

@@ -1,15 +1,15 @@
 <div class="gridBlock">
     <? foreach ($content as $item): ?>
         <? if ($item['id_nation']==='1'){
-            $item['id_nation']="usa";
+            $item['imgDir']="usa";
         } else{
-            $item['id_nation']="ussr";
+            $item['imgDir']="ussr";
         }?>
         <div class="item">
-            <img src="/img/ship/<?=$item['id_nation']?>/<?=$item['img']?>" alt="<?=$item['img']?>">
+            <img src="/img/ship/<?=$item['imgDir']?>/<?=$item['img']?>" alt="<?=$item['img']?>">
             <p class="nameShip"><?=$item['name']?></p>
             <p><?=$item['prev']?></p>
-            <a href="#">Купить <span class="priceShip"><?=$item['price']?></span>$</a>
+            <a href="/group/addItem/<?=$item['id_nation']?>/<?=$item['id']?>">Купить <span class="priceShip"><?=$item['price']?></span>$</a>
         </div>
     <? endforeach; ?>
 
