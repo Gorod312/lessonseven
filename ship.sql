@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3308
--- Время создания: Май 04 2019 г., 19:05
+-- Время создания: Май 05 2019 г., 20:52
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.2.0
 
@@ -31,17 +31,28 @@ SET time_zone = "+00:00";
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `name_user` text NOT NULL,
+  `session_id` text NOT NULL,
   `id_ship` int(11) NOT NULL,
-  `quonty` int(11) NOT NULL
+  `quonty` int(11) NOT NULL,
+  `adress` text NOT NULL,
+  `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `cart`
 --
 
-INSERT INTO `cart` (`id`, `name_user`, `id_ship`, `quonty`) VALUES
-(1, 'user', 2, 52),
-(76, '4fl3lq7poreldm4cqtisivvm16uni4jl', 1, 2);
+INSERT INTO `cart` (`id`, `name_user`, `session_id`, `id_ship`, `quonty`, `adress`, `status`) VALUES
+(106, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 2, 1, 'артур', NULL),
+(107, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 2, 1, 'артур', NULL),
+(108, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 3, 1, 'артур', NULL),
+(109, 'lll', 'm534gba7a0savqrre8hjqp5f2f3epss5', 1, 2, 'артур', NULL),
+(110, 'lll', 'm534gba7a0savqrre8hjqp5f2f3epss5', 5, 1, 'артур', NULL),
+(111, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 1, 2, 'артур', NULL),
+(112, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 2, 3, 'ssss', NULL),
+(113, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 3, 3, 'ssss', NULL),
+(114, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 2, 4, 'артур', NULL),
+(115, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 3, 5, 'артур', NULL);
 
 -- --------------------------------------------------------
 
@@ -140,7 +151,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT для таблицы `nation`
