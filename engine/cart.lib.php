@@ -1,15 +1,4 @@
 <?php
-session_start();
-$_SESSION ['name'] = "User";
-
-//создаем некий сборщик в глобальном массиву
-if (!isset($_SESSION['collection'])) {
-    $_SESSION['collection'] = [];
-    $_SESSION['quonty'] = 0;
-
-}
-
-
 //добавлем в сборщик корзины товар.
 function addItemCard($id)
 {
@@ -20,14 +9,13 @@ function addItemCard($id)
             if ($key == $id) {
                 $arr[$key] = ++$value;
                 $_SESSION['collection'] = $arr;
-                return;
+                return $arr[$key];
             }
         }
     }
     $arr[$id] = 1;
     $_SESSION['collection'] = $arr;
-
-    return;
+    return $arr[$id];
 
 }
 
@@ -38,9 +26,11 @@ function delItemCard($id)
     $arr[$id]--;
     if ($arr[$id] == 0) {
         unset($arr[$id]);
+        $_SESSION['collection'] = $arr;
+        return 0;
     }
     $_SESSION['collection'] = $arr;
-    return;
+    return $arr[$id];
 
 }
 
@@ -54,7 +44,7 @@ function totalcart()
             $result= "("."'".$name."'".",".$key.",".$value.")";
         } else {
             $temp= "("."'".$name."'".",".$key.",".$value.")";
-          $result.= ",".$temp;
+            $result.= ",".$temp;
         }
     }
     $sql="INSERT INTO `cart` ( `name_user`, `id_ship`, `quonty` ) VALUES $result";
@@ -62,16 +52,30 @@ function totalcart()
     $_SESSION['collection'] = [];
     $_SESSION['quonty'] = 0;
     session_destroy();
-    setcookie("PHPSESSID","",time()-3600);
-    $_SESSION['send']=1;
 }
 
-if (isset($_GET['exit'])) {
-    unset ($_SESSION ['name']);
-    unset ($_SESSION ['collection']);
-    session_destroy();
-    header("Location: /");
+function getCart()
+{
+    if (empty($_SESSION['collection'])) {
+        return null;
+    }
+    $result = "";
+    $arr = $_SESSION['collection'];
+    foreach ($arr as $key => $value) {
+        if (empty($result)) {
+            $result = $key;
+        } else {
+
+            $result .= "," . $key;
+        }
+    }
+    return getGroupCart($result);
+
 }
 
-
-
+function getGroupCart($id)
+{
+    $sql = "SELECT * FROM `ships` WHERE `id` IN ($id)";
+    $result = getAssocResult($sql);
+    return $result;
+}

@@ -5,6 +5,7 @@
     <title>Корабли</title>
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
 <div class="content">
@@ -22,34 +23,5 @@
 
     </footer>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $(".btnclickLikes").on('click', function (e) {
-            e.preventDefault();
-
-            var $clickNumber = $(this).data("id");
-
-            $.ajax({
-                url: "/../index.php",
-                type: "POST",
-                dataType: "json",
-                data: {
-                    clickNum: $clickNumber,
-                },
-                error: function () {
-                    alert("как то не очень")
-                },
-                success: function (answer) {
-                    var $id="[data-enter="+answer.id+"]";
-                    $($id).html(answer.result);
-                }
-
-            })
-        });
-
-    })
-
-</script>
 </body>
 </html>

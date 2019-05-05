@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../config/config.php';
 
 $url_array = explode("/", $_SERVER['REQUEST_URI']);

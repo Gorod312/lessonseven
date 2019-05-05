@@ -16,8 +16,6 @@ define('DB_PASS', '');
 define('DB_NAME', 'ship');
 
 //подключаем файлы баз и функций
-require_once ENGINE_DIR.'db.php';
-require_once ENGINE_DIR.'function.php';
-require_once ENGINE_DIR.'router.php';
-require_once ENGINE_DIR.'auth.php';
+include_once ENGINE_DIR . 'lib_autoload.php';
+
 
