@@ -167,6 +167,30 @@ nav a:hover{
 .emptyblock h2{
     text-align: center;
 }
+.sendform {
+    width: 400px;
+    padding: 15px;
+    margin: 10px auto;
+    background-image: url(../img/header/form.jpg);
+    background-size: cover;
+    color: #690301;
+    border-radius: 25px;
+
+
+}
+.sendform h2{
+
+}
+
+.inputform{
+    padding: 5px;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+input[type="submit"]{
+    font-size: 1em;
+
+}
 
 
 

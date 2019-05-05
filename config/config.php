@@ -11,8 +11,8 @@ define('LAYOUTS_DIR',VIEW_DIR.'layout/');
 
 //указания на данные базы
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_USER', 'user');
+define('DB_PASS', '123');
 define('DB_NAME', 'ship');
 
 //подключаем файлы баз и функций

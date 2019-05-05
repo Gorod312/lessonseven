@@ -9,8 +9,20 @@
 
 $arr = $_SESSION['collection'];
 $total = 0; ?>
-
+<form class="sendform" action="/send/total" method="POST">
+    <fieldset>
+        <legend><h2>Оформить заказ</h2></legend>
+        <p>Введите получателя </p>
+        <input class="inputform" type="text" name="senduser" placeholder="Получатель" required>
+        <p>Порт доставки</p>
+        <input class="inputform" type="text" name="sendport" placeholder="Порт доставки корабля" required>
+        <br>
+        <input class="totalbtn" type="submit" value="Отлично покупаю">
+    </fieldset>
+</form>
+<hr>
 <? foreach ($content as $item): ?>
+
 
     <? if ($item['id_nation'] === '1') {
         $item['imgDir'] = "usa";
@@ -56,7 +68,6 @@ $total = 0; ?>
 <? endforeach; ?>
 <div class="totalblock">
     <p class="nameShip"> Total......<span id="totalAll"> <?= $total ?></span> $</p>
-    <a class="totalbtn" href="/send/total"> Отлично! покупаю </a>
 </div>
 <script>
     $(document).ready(function () {

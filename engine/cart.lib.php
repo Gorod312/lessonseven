@@ -37,20 +37,26 @@ function delItemCard($id)
 function totalcart()
 {
     $result = "";
-    $name=session_id();
+    $session=session_id();
+    $adress=$_POST['sendport'];
+    $senduser=$_POST['senduser'];
+    $senduser=escapeString(createConnection(),$senduser);
+    $adress=escapeString(createConnection(),$adress);
     $arr = $_SESSION['collection'];
     foreach ($arr as $key => $value) {
         if (empty($result)) {
-            $result= "("."'".$name."'".",".$key.",".$value.")";
+            $result= "("."'".$senduser."'".","."'".$session."'".",".$key.",".$value.","."'".$adress."'".")";
         } else {
-            $temp= "("."'".$name."'".",".$key.",".$value.")";
+            $temp= "("."'".$senduser."'".","."'".$session."'".",".$key.",".$value.","."'".$adress."'".")";
             $result.= ",".$temp;
         }
     }
-    $sql="INSERT INTO `cart` ( `name_user`, `id_ship`, `quonty` ) VALUES $result";
+    $sql="INSERT INTO `cart` ( `name_user`, `session_id`, `id_ship`, `quonty`, `adress` ) VALUES $result";
     execQuery($sql);
     $_SESSION['collection'] = [];
     $_SESSION['quonty'] = 0;
+    unset($_POST['sendport']);
+    unset($_POST['senduser']);
     session_destroy();
 }
 
