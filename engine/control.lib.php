@@ -8,6 +8,10 @@ function prepareVariables($page, $action, $id)
     $allow = false;
     switch ($page) {
         case 'index':
+            if ($action=='exit'){
+                exituser();
+                header("Location: /$page/");
+            }
             $params["content"] = getAllshow();
             break;
         case 'ajax':
@@ -47,6 +51,19 @@ function prepareVariables($page, $action, $id)
             }
             $params["content"] = 0;
             break;
+        case 'guest':
+            $params["content"]=getPageGuest();
+            break;
+        case 'admin':
+            if ($action === "changeOrder") {
+                changeOrder($id);
+                header("Location: /$page/");
+            }
+            if ($action === "deleteOrder") {
+                deleteOrder($id);
+                header("Location: /$page/");
+            }
+            $params['content']=getPageAdmin();
     }
     return $params;
 

@@ -37,28 +37,32 @@ function delItemCard($id)
 function totalcart()
 {
     $result = "";
-    $session=session_id();
-    $adress=$_POST['sendport'];
-    $senduser=$_POST['senduser'];
-    $senduser=escapeString(createConnection(),$senduser);
-    $adress=escapeString(createConnection(),$adress);
+    $session = session_id();
+    $adress = $_POST['sendport'];
+    $senduser = $_POST['senduser'];
+    $senduser = escapeString(createConnection(), $senduser);
+    $adress = escapeString(createConnection(), $adress);
     $arr = $_SESSION['collection'];
-    $login=1;
+    if ($_SESSION['status'] == 'guest' && (!empty($_SESSION['id']))) {
+        $login = $_SESSION['id'];
+    } else {
+        $login = 1;
+    }
+
     foreach ($arr as $key => $value) {
         if (empty($result)) {
-            $result= "("."'".$senduser."'".","."'".$session."'".",".$key.",".$value.","."'".$adress."'".",".$login.")";
+            $result = "(" . "'" . $senduser . "'" . "," . "'" . $session . "'" . "," . $key . "," . $value . "," . "'" . $adress . "'" . "," . $login . ")";
         } else {
-            $temp= "("."'".$senduser."'".","."'".$session."'".",".$key.",".$value.","."'".$adress."'".",".$login.")";
-            $result.= ",".$temp;
+            $temp = "(" . "'" . $senduser . "'" . "," . "'" . $session . "'" . "," . $key . "," . $value . "," . "'" . $adress . "'" . "," . $login . ")";
+            $result .= "," . $temp;
         }
     }
-    $sql="INSERT INTO `cart` ( `name_user`, `session_id`, `id_ship`, `quonty`, `adress`,`id_user` ) VALUES $result";
+    $sql = "INSERT INTO `cart` ( `name_user`, `session_id`, `id_ship`, `quonty`, `adress`,`id_user` ) VALUES $result";
     execQuery($sql);
     $_SESSION['collection'] = [];
     $_SESSION['quonty'] = 0;
     unset($_POST['sendport']);
     unset($_POST['senduser']);
-    session_destroy();
 }
 
 function getCart()

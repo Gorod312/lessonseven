@@ -5,17 +5,13 @@
 
 <?php
 if ($_SESSION['status']=="user") {
-    echo "<a class=\"btn\" href=\"/login\" title=\"LogIn\"><i class=\"fas fa-sign-in-alt fa-3x mb_cart\">Вход</i></a>";
+    echo "<a class=\"btn\" href=\"/login\" title=\"user\"><i class=\"fas fa-sign-in-alt fa-3x mb_cart\">Вход</i></a>";
  } elseif ($_SESSION['status']=="guest" ){
-    echo "<a class=\"btn\" href=\"/login\" title=\"LogIn\"><i class=\"fas fa-user fa-3x mb_cart\">Гость</i></a>
-";
+    echo "<a class=\"btn\" href=\"/guest\" title=\"LogIn\"><i class=\"fas fa-user fa-3x mb_cart\">Гость</i></a><a class=\"btn\" href=\"/index/exit/\" title=\"выход\"><i class=\"fas fa-door-open fa-2x mb_cart\"></i></a>";
  } elseif ($_SESSION['status']=="admin"){
-    echo "<a class=\"btn\" href=\"/login\" title=\"LogIn\"><i class=\"fas fa-baby fa-3x mb_cart\">Админ</i></a>
-    ";
+    echo "<a class=\"btn\" href=\"/admin\" title=\"admin\"><i class=\"fas fa-baby fa-3x mb_cart\">Админ</i></a><a class=\"btn\" href=\"/index/exit/\" title=\"выход\"><i class=\"fas fa-door-open fa-2x mb_cart\"></i></a>";
 }
 
-//
-//<i class="fas fa-baby"></i>
 ?>
 
 

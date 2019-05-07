@@ -187,6 +187,7 @@ nav a:hover{
     font-size: 1em;
     margin-bottom: 10px;
     border-radius: 15px;
+    outline: none;
 }
 
 input[type="submit"]{
@@ -206,7 +207,16 @@ input[type="submit"]{
     display: flex;
     justify-content: space-around;
     }
+.cartuser{
+    text-align: center;
+    font-size: 2em;
+    font-weight: 800;
 
+}
+
+.marginDiv{
+    margin-top: 15px;
+}
 
 
 

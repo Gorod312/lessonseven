@@ -9,12 +9,11 @@ function newUser()
             $hash = uniqid(rand(), true);
             $login = escapeString(createConnection(), $_POST['user']);
             $pass = escapeString(createConnection(), $_POST['passuser']);
-            $pass = password_hash($pass, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `user` (`hash`, `login`, `pass`, `mail`) VALUES ('$hash', '$login', '$pass', '$mail')";
+            $passHash = password_hash($pass, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO `user` (`hash`, `login`, `pass`, `mail`) VALUES ('$hash', '$login', '$passHash', '$mail')";
             execQuery($sql);
-            $_SESSION['user'] = $login;
-            $_SESSION['logflag'] = "good";
             $_SESSION['status'] = 'guest';
+            auth($mail,$pass);
         } else {
             $_SESSION['logflag'] = "wrong";
             $_SESSION['mail'] = $mail;
@@ -83,5 +82,13 @@ function auth($mail, $pass)
     return false;
 }
 
-
+function exituser(){
+    unset($_SESSION['collection']) ;
+    unset($_SESSION['quonty']) ;
+    unset($_SESSION['status']) ;
+    unset($_SESSION['id']);
+    unset($_SESSION['mail']);
+    unset($_SESSION['logflag']);
+    session_destroy();
+}
 
