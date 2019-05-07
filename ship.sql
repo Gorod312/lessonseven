@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3308
--- Время создания: Май 05 2019 г., 20:52
+-- Время создания: Май 07 2019 г., 15:50
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.2.0
 
@@ -35,24 +35,19 @@ CREATE TABLE `cart` (
   `id_ship` int(11) NOT NULL,
   `quonty` int(11) NOT NULL,
   `adress` text NOT NULL,
-  `status` int(11) DEFAULT NULL
+  `status` varchar(255) DEFAULT NULL,
+  `id_user` int(11) NOT NULL,
+  `data_order` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `cart`
 --
 
-INSERT INTO `cart` (`id`, `name_user`, `session_id`, `id_ship`, `quonty`, `adress`, `status`) VALUES
-(106, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 2, 1, 'артур', NULL),
-(107, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 2, 1, 'артур', NULL),
-(108, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 3, 1, 'артур', NULL),
-(109, 'lll', 'm534gba7a0savqrre8hjqp5f2f3epss5', 1, 2, 'артур', NULL),
-(110, 'lll', 'm534gba7a0savqrre8hjqp5f2f3epss5', 5, 1, 'артур', NULL),
-(111, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 1, 2, 'артур', NULL),
-(112, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 2, 3, 'ssss', NULL),
-(113, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 3, 3, 'ssss', NULL),
-(114, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 2, 4, 'артур', NULL),
-(115, 'Миша', 'm534gba7a0savqrre8hjqp5f2f3epss5', 3, 5, 'артур', NULL);
+INSERT INTO `cart` (`id`, `name_user`, `session_id`, `id_ship`, `quonty`, `adress`, `status`, `id_user`, `data_order`) VALUES
+(136, 'Васёк', 'bmsf1gr0831vui85fru2uvdho9lpr39t', 2, 1, 'артур', NULL, 16, '2019-05-07 13:32:57'),
+(141, 'Миша', 'bmsf1gr0831vui85fru2uvdho9lpr39t', 2, 1, 'артур', NULL, 1, '2019-05-07 14:34:49'),
+(143, 'Миша', 'bmsf1gr0831vui85fru2uvdho9lpr39t', 2, 1, 'артур', NULL, 1, '2019-05-07 15:49:27');
 
 -- --------------------------------------------------------
 
@@ -109,9 +104,20 @@ INSERT INTO `ships` (`id`, `id_nation`, `name`, `prev`, `price`, `img`) VALUES
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `hash` text NOT NULL,
-  `id_ships` int(11) NOT NULL,
-  `quonty` int(11) NOT NULL
+  `login` text NOT NULL,
+  `pass` text NOT NULL,
+  `mail` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `user`
+--
+
+INSERT INTO `user` (`id`, `hash`, `login`, `pass`, `mail`) VALUES
+(1, '', 'noregistration', '', 'notel'),
+(13, '4999800105cd05b48ed4799.47801846', 'admin', '$2y$10$Fk46Jq6HsQYzuQEPYwhrXezHOz6UidfjnZae3hfLRU.76DczvjLs.', 'admin'),
+(15, '20464942095cd1441981d346.77115118', 'Толик', '$2y$10$SEWOs.5OtkGAsLkgjCX2gekKYEs1PqOI3px0e8gZklAPQqAtDY/LG', '1@mail.ru'),
+(16, '11376029925cd15d2a4fcba2.13729247', 'Васёк', '$2y$10$ycS/559tBlU52s1TNGXXaurMDwyAVl4dTBB0Pq48u0PZSKwqL/Nmy', '2@mail.ru');
 
 --
 -- Индексы сохранённых таблиц
@@ -122,7 +128,8 @@ CREATE TABLE `user` (
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_ship` (`id_ship`);
+  ADD KEY `id_ship` (`id_ship`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Индексы таблицы `nation`
@@ -151,7 +158,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 
 --
 -- AUTO_INCREMENT для таблицы `nation`
@@ -169,7 +176,7 @@ ALTER TABLE `ships`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -179,7 +186,8 @@ ALTER TABLE `user`
 -- Ограничения внешнего ключа таблицы `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`id_ship`) REFERENCES `ships` (`id`);
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`id_ship`) REFERENCES `ships` (`id`),
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `ships`
