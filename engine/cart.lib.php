@@ -43,15 +43,16 @@ function totalcart()
     $senduser=escapeString(createConnection(),$senduser);
     $adress=escapeString(createConnection(),$adress);
     $arr = $_SESSION['collection'];
+    $login=1;
     foreach ($arr as $key => $value) {
         if (empty($result)) {
-            $result= "("."'".$senduser."'".","."'".$session."'".",".$key.",".$value.","."'".$adress."'".")";
+            $result= "("."'".$senduser."'".","."'".$session."'".",".$key.",".$value.","."'".$adress."'".",".$login.")";
         } else {
-            $temp= "("."'".$senduser."'".","."'".$session."'".",".$key.",".$value.","."'".$adress."'".")";
+            $temp= "("."'".$senduser."'".","."'".$session."'".",".$key.",".$value.","."'".$adress."'".",".$login.")";
             $result.= ",".$temp;
         }
     }
-    $sql="INSERT INTO `cart` ( `name_user`, `session_id`, `id_ship`, `quonty`, `adress` ) VALUES $result";
+    $sql="INSERT INTO `cart` ( `name_user`, `session_id`, `id_ship`, `quonty`, `adress`,`id_user` ) VALUES $result";
     execQuery($sql);
     $_SESSION['collection'] = [];
     $_SESSION['quonty'] = 0;

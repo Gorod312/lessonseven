@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['collection'])) {
+    $_SESSION['collection'] = [];
+    $_SESSION['quonty'] = 0;
+    $_SESSION['status'] = 'user';
+}
 require_once '../config/config.php';
 
 $url_array = explode("/", $_SERVER['REQUEST_URI']);
