@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 if (!isset($_SESSION['collection'])) {
     $_SESSION['collection'] = [];
     $_SESSION['quonty'] = 0;

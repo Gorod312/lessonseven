@@ -3,9 +3,12 @@
 function getPageAdmin(){
     if ($_SESSION['status'] == 'admin') {
         if (empty($_SESSION['id'])) {
+            $_SESSION['status']='false';
             return;
+
         }
     } else {
+        $_SESSION['status']='false';
         return;
     }
     $sql = "SELECT cart.id, cart.name_user, cart.quonty, cart.adress, cart.status, cart.data_order, ships.name, user.login FROM `cart`,`ships`,`user` WHERE  cart.id_ship=ships.id AND cart.id_user=user.id";

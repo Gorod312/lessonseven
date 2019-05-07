@@ -19,9 +19,11 @@ function getPageGuest()
 {
     if ($_SESSION['status'] == 'guest') {
         if (empty($_SESSION['id'])) {
+            $_SESSION['status']='false';
             return;
         }
     } else {
+        $_SESSION['status']='false';
         return;
     }
 

@@ -1,4 +1,12 @@
-<? if (empty($content)) {
+<? if ($_SESSION['status']=='false'){
+    echo "<div class=\"emptyblock\">
+<h2>Каждый мошеннии рано или поздно будет пойман</h2>
+<img src='/img/header/nocart.gif' alt='nocart'>
+</div>";
+    $_SESSION['status']='user';
+    return;
+}
+if (empty($content)) {
 
     echo "<div class=\"emptyblock\">
 <h2>Уважаемый {$_SESSION['user']}. вы еще пока заказов не делали</h2>
